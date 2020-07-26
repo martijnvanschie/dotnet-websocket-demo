@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.SignalR;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.SignalR;
 
 namespace SignalRServer
 {
@@ -16,7 +16,8 @@ namespace SignalRServer
 
         public async Task SendMessage(string message)
         {
-            await Clients.All.SendAsync("ReceiveMessage", message);
+            Console.WriteLine($"Receive message [{message}] from client [{Context.ConnectionId}]");
+            await Clients.All.SendAsync("ReceiveMessage", $"Receive message [{message}] from client [{Context.ConnectionId}]");
         }
     }
 }
