@@ -3,14 +3,15 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using System;
 
-namespace SignalRServer
+namespace WebSocketServer
 {
     class Program
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Starting the WebSocket Server...");
             CreateWebHostBuider(args).Build().Run();
-            Console.WriteLine("Done!");
+            Console.WriteLine("Press any key to shutdown server...");
             Console.ReadKey();
         }
 
@@ -18,6 +19,9 @@ namespace SignalRServer
         {
             var builder = WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();
+
+            Console.WriteLine("WebSocket Server started!");
+
             return builder;
         }
     }

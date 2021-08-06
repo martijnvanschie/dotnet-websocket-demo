@@ -7,16 +7,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SignalRServer.Pipelines
+namespace WebSocketServer.Pipelines
 {
     public static class WebSocketApplicationBuilderExtensions
     {
-
         public static IApplicationBuilder UseWebSocketLogger(this IApplicationBuilder builder)
         {
             return builder.UseMiddleware<WebSocketLogger>();
         }
-
     }
 
     public class WebSocketLogger
@@ -41,8 +39,6 @@ namespace SignalRServer.Pipelines
                 await _next(context);
             }
 
-
-            //return;
         }
 
         private async Task Echo(HttpContext context, WebSocket webSocket)
